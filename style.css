@@ -29,7 +29,7 @@ h1 {
     margin: 30px auto;
 }
 
-/* Box */
+/* Box (form dan edit) */
 .box {
     background: #ffffff;
     border: 2px solid #d4d8de;
@@ -73,7 +73,7 @@ input:focus, select:focus {
     outline: none;
 }
 
-/* Tombol */
+/* Tombol umum */
 button {
     background: linear-gradient(90deg, #0066cc, #003366);
     border: none;
@@ -105,6 +105,7 @@ h2 {
     margin-top: 35px;
 }
 
+/* Item Task */
 .task {
     background: #f5f6fa;
     border-left: 6px solid #0066cc;
@@ -123,33 +124,122 @@ h2 {
     box-shadow: 0 5px 12px rgba(0,0,0,0.15);
 }
 
-/* Tombol di task/list */
-.task a {
+/* Container tombol di dalam task */
+.task-buttons {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    /* pastikan bukan list */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Hapus kemungkinan marker pada semua anak (safety) */
+.task-buttons > * {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Tombol dalam task (anchor dan button) */
+.task a,
+.task button {
     text-decoration: none;
     background: #0066cc;
     color: #fff;
     padding: 8px 18px;
     border-radius: 6px;
     font-size: 12px;
-    margin-right: 25px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     transition: 0.2s;
+    font-weight: 500;
+    border: none;
 }
 
-.task a:hover {
+/* Pastikan tidak ada pseudo content yang menambahkan dash */
+.task a::before,
+.task a::after,
+.task button::before,
+.task button::after {
+    content: none !important;
+}
+
+/* Hover */
+.task a:hover,
+.task button:hover {
     background: #004a99;
     box-shadow: 0 0 10px rgba(0,102,204,0.4);
 }
 
-/* Task selesai */
+/* Warna khusus untuk tombol "Batalkan" */
+.task a[href*="undo"],
+.task button[name="undo"] {
+    background: #ff5c8d;
+    color: #fff;
+}
+
+.task a[href*="undo"]:hover,
+.task button[name="undo"]:hover {
+    background: #e6005c;
+}
+
+/* Warna khusus untuk tombol "Hapus" */
+.task a[href*="delete"],
+.task button[name="delete"] {
+    background: #cc0000;
+}
+
+.task a[href*="delete"]:hover,
+.task button[name="delete"]:hover {
+    background: #990000;
+}
+
+/* Warna khusus untuk tombol "Edit" */
+.task a[href*="edit"],
+.task button[name="edit"] {
+    background: #ffaa00;
+    color: #000;
+}
+
+.task a[href*="edit"]:hover,
+.task button[name="edit"]:hover {
+    background: #ffcc33;
+}
+
+/* Task selesai (tidak dicoret) */
 .task.done {
     background: #e7f9ec;
     border-left: 6px solid #00cc66;
-    color: #006633;
-    text-decoration: line-through;
+    color: #004d26;
+    text-decoration: none; /* tidak dicoret */
 }
 
-/* Tombol Container */
+/* Tombol Container umum (di form) */
 .buttons {
     margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .task {
+        width: 95%;
+        font-size: 13px;
+    }
+
+    button, .task a {
+        font-size: 12px;
+        padding: 8px 14px;
+    }
 }
