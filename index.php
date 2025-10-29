@@ -3,7 +3,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>To-Do List BMW iQOO Edition</title>
+    <title>To-Do List</title>
     <link rel="stylesheet" href="style.css">
     <style>
         /* Tambahan styling kecil agar tombol sejajar */
